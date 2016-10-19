@@ -1,0 +1,68 @@
+.tweet-feed {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
+	height: 250px;
+}
+
+article {
+	margin-top: 20px;
+	background-color: #EEEEEE;
+	border: 1px solid #CBCBCB;
+	border-radius: 10px;
+	height: 250px;
+}
+
+article header {
+	background-color: #DAD1CF;
+	height: 100px;
+}
+
+.profilePicture {
+	float: left;
+	height: 4em;
+	width: 4em;
+	padding: 4px;
+}
+
+article header h3 {
+	color: #637D84;
+	float: left;
+	padding-left: 5px;
+}
+
+article header h4 {
+	color: #9F9F9F;
+	float: right;
+	padding-right: 5px;
+}
+
+.the-tweet {
+	background-color: white;
+	color: #32555D;
+	padding-top: 20px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 0px;
+	height: 143px;
+	margin-top: -16px;
+	margin-bottom: -16px;
+
+}
+
+footer {
+	background-color: white;
+	border-top: 1px solid grey;
+	margin-bottom: 10px;
+	height: 21px;
+}
+
+.time-stamp {
+	float: left;
+	size: -2em;
+	margin-bottom: -16px;
+	background-color: white;
+	width: 100%;
+	padding-left: 5px;
+}

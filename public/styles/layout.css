@@ -3,6 +3,15 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
+/*body {
+  
+  src: url('../../robotoCondense/RobotoCondensed-Regular.ttf'),
+  		 url('../../robotoCondense/RobotoCondensed-Italic.ttf'),
+  		 url('../../robotoCondense/RobotoCondensed-Bold.ttf');
+}
+}*/
+
 html {
   box-sizing: border-box;
 }
@@ -18,8 +27,24 @@ body {
   margin: 0;
   color: #244751;
   background-color: #eee;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ .container {
+	width: 600px;
+	position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+	margin: auto;
+	background-color: white;
+	margin-top: 140px;
+}
+
+
+
