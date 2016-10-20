@@ -14,8 +14,12 @@ article {
 	height: 250px;
 }
 
+article:hover .fa-flag, article:hover .fa-retweet, article:hover .fa-heart {
+	visibility: visible;
+}
+
 article header {
-	background-color: #DAD1CF;
+	background-color: #F3F3F3;
 	height: 100px;
 }
 
@@ -45,7 +49,7 @@ article header h4 {
 	padding-right: 10px;
 	padding-left: 10px;
 	padding-bottom: 0px;
-	height: 143px;
+	height: 140px;
 	margin-top: -16px;
 	margin-bottom: -16px;
 
@@ -55,7 +59,7 @@ footer {
 	background-color: white;
 	border-top: 1px solid grey;
 	margin-bottom: 10px;
-	height: 21px;
+	height: 25px;
 }
 
 .time-stamp {
@@ -65,4 +69,28 @@ footer {
 	background-color: white;
 	width: 100%;
 	padding-left: 5px;
+}
+
+.fa-flag {
+	float: right;
+	color: #58C5B7;
+	padding-right: 5px;
+	position: flex;
+	visibility: hidden;
+}
+
+.fa-retweet {
+	float: right;
+	color: #58C5B7;
+	padding-right: 5px;
+	position: flex;
+	visibility: hidden;
+}
+
+.fa-heart {
+	float: right;
+	color: #58C5B7;
+	padding: 2px;
+	position: flex;
+	visibility: hidden;
 }
