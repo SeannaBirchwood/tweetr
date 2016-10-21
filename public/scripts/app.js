@@ -33,22 +33,29 @@
 
 	
 	//this loops through the json data and feeds it to the above function, then appends the result
-	function renderTweets(loadInput) {
-		loadInput.forEach(function (currentTweetObj) {
-			$('.tweet-feed').append(createTweetElement(currentTweetObj));
-		});
-	}
+	// function renderTweets(loadInput) {
+	// 	loadInput.forEach(function (currentTweetObj) {
+	// 		$('.tweet-feed').append(createTweetElement(currentTweetObj));
+	// 	});
+	// }
+		function renderTweets(tweetsList) {
+      $('.tweet-feed').empty();
+
+      var sortTweets = tweetsList.sort(function (a, b) {
+        return a.created_at < b.created_at;
+      });
+      sortTweets.forEach(function (tweet) {
+        $('.tweet-feed').append(createTweetElement(tweet));
+      });
+    }
 
 	$('form').on("click", function(event) {
 		event.preventDefault();
 		var posting = $.post("/tweets/", {text: $(this).serialize()});
-		posting.done(function(data) {
-			$(".the-tweet").toggle("fast", () => {
+			$(".the-tweet").slideToggle("fast", () => {
 				if($('.the-tweet').css('display') == 'block') {
-					$("textarea").empty();	
+					$("textarea").focus();	
 				}
-			});
-			return false;
 		});
 	});
 
@@ -63,8 +70,8 @@
 				success: function(response) {
 					renderTweets(response);
 				},
-				fail: ($inputTweet) => {
-					console.log("You've got mail!")
+				fail: function(response) {
+					console.log("You've got mail!");
 				}
 			});
 	}
