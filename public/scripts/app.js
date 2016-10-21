@@ -27,7 +27,6 @@
  				<span class="fa fa-retweet" aria-hidden="true">
  			</span>
  			<span class="fa fa-heart" aria-hidden="true"></span></footer></article>`;
- 			//$("<div>").text(textFromUser);
  		return $tweet;
  	} 
 
@@ -40,9 +39,23 @@
 		});
 	}
 
+	$('form').on("click", function(event) {
+		event.preventDefault();
+		var posting = $.post("/tweets/", {text: $(this).serialize()});
+		posting.done(function(data) {
+			$(".the-tweet").toggle("fast", () => {
+				if($('.the-tweet').css('display') == 'block') {
+					$("textarea").empty();	
+				}
+			});
+			return false;
+		});
+	});
+
+
+
 	var loadTweets = ($inputTweet) => {
-		var $inputTweet = $('form').on("submit"); 
-			//$.post("/", function (data) {
+		var $inputTweet = $('form');
         $('.tweet-feed').append();
 			$.ajax({
 				url: '/tweets',
@@ -51,6 +64,7 @@
 					renderTweets(response);
 				},
 				fail: ($inputTweet) => {
+					console.log("You've got mail!")
 				}
 			});
 	}

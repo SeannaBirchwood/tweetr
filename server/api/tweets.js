@@ -8,6 +8,7 @@ module.exports = function(db) {
 
   tweets.get("/", function(req, res) {
     let tweets = db.getTweets();
+    console.log("We're awesome");
     // simulate delay
     setTimeout(() => {
       return res.json(tweets);
@@ -32,6 +33,11 @@ module.exports = function(db) {
     return res.send();
   });
 
-  return tweets;
+  // tweets.post("/tweets/", function(req, res) {
+  //   console.log("Tweeted to server");
+  // });
 
+  return tweets;
 }
+
+
