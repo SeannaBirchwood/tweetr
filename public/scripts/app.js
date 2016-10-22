@@ -62,8 +62,10 @@
 		$(this).css("background-color", "white").css("color", "black");
 	});
 
+	$('.new-tweet').hide();
 	$('button').on("click", () => {
-		$('.textarea').focus()
+		$('.new-tweet').toggle();
+		$('textarea').focus();
 	});
 
 
