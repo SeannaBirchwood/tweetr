@@ -33,45 +33,39 @@
 
 	
 	//this loops through the json data and feeds it to the above function, then appends the result
-	// function renderTweets(loadInput) {
-	// 	loadInput.forEach(function (currentTweetObj) {
-	// 		$('.tweet-feed').append(createTweetElement(currentTweetObj));
-	// 	});
-	// }
-		function renderTweets(tweetsList) {
-      $('.tweet-feed').empty();
+	
+	function renderTweets(tweetsList) {
+		$('.tweet-feed').empty();
 
-      var sortTweets = tweetsList.sort(function (a, b) {
-        return a.created_at < b.created_at;
-      });
-      sortTweets.forEach(function (tweet) {
-        $('.tweet-feed').append(createTweetElement(tweet));
-      });
-    }
+		var sortTweets = tweetsList.sort(function (a, b) {
+			return a.created_at < b.created_at;
+		});
+		sortTweets.forEach(function (tweet) {
+			$('.tweet-feed').append(createTweetElement(tweet));
+		});
+	}
 
-	$('form').on("click", function(event) {
+	$('form').on("submit", function(event) {
 		event.preventDefault();
-		var posting = $.post("/tweets/", {text: $(this).serialize()});
+		var posting = $.post("/tweets/", $(this).serialize(), function() {
+			loadTweets();
+		});
 			$(".the-tweet").slideToggle("fast", () => {
 				if($('.the-tweet').css('display') == 'block') {
-					$("textarea").focus();	
+					$("textarea").focus();
 				}
 		});
+			$('textarea').val('');
 	});
 
 
 
 	var loadTweets = ($inputTweet) => {
-		var $inputTweet = $('form');
-        $('.tweet-feed').append();
 			$.ajax({
 				url: '/tweets',
 				dataType: "json",
 				success: function(response) {
 					renderTweets(response);
-				},
-				fail: function(response) {
-					console.log("You've got mail!");
 				}
 			});
 	}
