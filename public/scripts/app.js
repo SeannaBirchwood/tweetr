@@ -50,12 +50,20 @@
 		var posting = $.post("/tweets/", $(this).serialize(), function() {
 			loadTweets();
 		});
-			$(".the-tweet").slideToggle("fast", () => {
-				if($('.the-tweet').css('display') == 'block') {
-					$("textarea").focus();
-				}
-		});
 			$('textarea').val('');
+		});
+			
+
+	$('button').mouseleave(function() {
+		$(this).css("background-color", "#E7FDFF").css("color", "#009F86");
+	});
+
+	$('button').mouseenter(function() {
+		$(this).css("background-color", "white").css("color", "black");
+	});
+
+	$('button').on("click", () => {
+		$('.textarea').focus()
 	});
 
 
