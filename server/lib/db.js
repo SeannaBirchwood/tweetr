@@ -1,8 +1,21 @@
 "use strict";
 
-const initialTweets = require("./tweets");
+//copied from mongo_example.js
 
-const db = { tweets: initialTweets };
+const MongoClient = require("mongodb").MongoClient;
+
+const MONGODB_URI = "mongodb://127.0.0.1/tweetr"
+
+console.log(`Connecting to MongoDB running at: ${MONGODB_URI}`);
+
+MongoClient.connect(MONGODB_URI, (err, db) => {
+
+  if (err) {
+    console.log('Could not connect! Unexpected error. Details below.');
+    throw err;
+  }
+
+  console.log('Connected to the database!');
 
 const dbMethods = {
 

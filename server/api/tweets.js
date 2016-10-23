@@ -33,9 +33,6 @@ module.exports = function(db) {
     return res.send();
   });
 
-  // tweets.post("/tweets/", function(req, res) {
-  //   console.log("Tweeted to server");
-  // });
 
   return tweets;
 }
