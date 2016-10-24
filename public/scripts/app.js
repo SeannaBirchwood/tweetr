@@ -13,26 +13,28 @@
 
  	//this takes json data and converts it to html friendly code
  	var createTweetElement = (loadInput) => {
- 		console.log(loadInput, "Are you the tweet I'm looking for?")
  		var $tweet = `<article>
- 			<header>
- 				<img class="profilePicture" src=${loadInput.user.avatars.small}>
- 				<h3> ${loadInput.user.name}</h3>
- 				<h4>${loadInput.user.handle}</h4>
- 			</header>
- 				<p class="the-tweet">${loadInput.content.text}</p>
- 			<footer>
- 				<p class="time-stamp">${loadInput.created_at}</p>
- 				<span class="fa fa-flag" aria-hidden="true">
+ 		<header>
+ 			<img class="profilePicture" src=${loadInput.user.avatars.small}>
+ 			<h3> ${loadInput.user.name}</h3>
+ 			<h4>${loadInput.user.handle}</h4>
+ 		</header>
+ 			<p class="the-tweet">${loadInput.content.text}</p>
+ 		<footer>
+ 			<p class="time-stamp">${loadInput.created_at}</p>
+ 			<span class="fa fa-flag" aria-hidden="true">
  			</span>
- 				<span class="fa fa-retweet" aria-hidden="true">
+ 			<span class="fa fa-retweet" aria-hidden="true">
  			</span>
- 			<span class="fa fa-heart" aria-hidden="true"></span></footer></article>`;
+ 			<span class="fa fa-heart" aria-hidden="true">
+ 			</span>
+ 		</footer>
+ 		</article>`;
  		return $tweet;
  	} 
 
 
-	
+
 	//this loops through the json data and feeds it to the above function, then appends the result
 	
 	function renderTweets(tweetsList) {
@@ -51,9 +53,9 @@
 		var posting = $.post("/tweets/", $(this).serialize(), function() {
 			loadTweets();
 		});
-			$('textarea').val('');
-		});
-			
+		$('textarea').val('');
+	});
+
 
 	$('button').mouseleave(function() {
 		$(this).css("background-color", "#E7FDFF").css("color", "#009F86");
@@ -72,14 +74,13 @@
 
 
 	var loadTweets = ($inputTweet) => {
-			$.ajax({
-				url: '/tweets',
-				dataType: "json",
-				success: function(response) {
-					console.log('Success ', response)
-					renderTweets(response);
-				}
-			});
+		$.ajax({
+			url: '/tweets',
+			dataType: "json",
+			success: function(response) {
+				renderTweets(response);
+			}
+		});
 	}
 
 	loadTweets();

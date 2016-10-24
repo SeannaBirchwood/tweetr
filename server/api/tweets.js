@@ -7,12 +7,9 @@ const tweets  = express.Router();
 module.exports = function(db) {
 
   tweets.get("/", function(req, res) {
-    console.log("Please let us be awesome");
     db.getTweets(function (tweets) {
-      console.log(tweets, "I am tweets")
       return res.json(tweets);
     });
-    console.log("We're awesome");
   });
 
   tweets.post("/", function(req, res) {

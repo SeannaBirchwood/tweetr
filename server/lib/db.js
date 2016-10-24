@@ -19,7 +19,6 @@ module.exports = {
     MongoClient.connect(MONGODB_URI, (err, db) => {
 
       if (err) {
-        console.log('Could not connect! Unexpected error. Details below.');
         throw err;
       }
 
@@ -31,17 +30,14 @@ module.exports = {
     saveTweet: (data, cb) => {
       let allTweets = db.collection("tweets");
       allTweets.insertOne(data);
-      console.log("I am the saveTweet function");
       return true;
     },
 
     getTweets: (completionHandler) => {
       let allTweets = db.collection("tweets");
         return allTweets.find().toArray(function (err, results) {
-          console.log("Got " + results.length + " results");
           completionHandler(results);
           });
-          console.log(allTweets, "hey, you!");
         }
     }
      onConnect(dbMethods);
