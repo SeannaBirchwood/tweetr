@@ -5,6 +5,7 @@
 	position: fixed;
 	top: 0;
 	content: right: 2em, left: 2em, top: 0em, bottom: 0em;
+	z-index: 1;
 }
 
 #nav-bar .logo {

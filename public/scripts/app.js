@@ -13,6 +13,7 @@
 
  	//this takes json data and converts it to html friendly code
  	var createTweetElement = (loadInput) => {
+ 		console.log(loadInput, "Are you the tweet I'm looking for?")
  		var $tweet = `<article>
  			<header>
  				<img class="profilePicture" src=${loadInput.user.avatars.small}>
@@ -75,6 +76,7 @@
 				url: '/tweets',
 				dataType: "json",
 				success: function(response) {
+					console.log('Success ', response)
 					renderTweets(response);
 				}
 			});

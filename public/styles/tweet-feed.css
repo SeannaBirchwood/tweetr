@@ -1,9 +1,17 @@
+.bgdConatiner {
+	background-color: black;
+	width: 800px;
+}
+
 .tweet-feed {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	margin-left: 0px;
 	margin-right: 0px;
 	height: 250px;
+	width: 600px;
+	margin: 7em;
+	margin-top: 0em;
 }
 
 article {
@@ -16,6 +24,10 @@ article {
 
 article:hover .fa-flag, article:hover .fa-retweet, article:hover .fa-heart {
 	visibility: visible;
+}
+
+article:hover {
+	opacity: .7;
 }
 
 article header {

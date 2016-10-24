@@ -7,12 +7,12 @@ const tweets  = express.Router();
 module.exports = function(db) {
 
   tweets.get("/", function(req, res) {
-    let tweets = db.getTweets();
-    console.log("We're awesome");
-    // simulate delay
-    setTimeout(() => {
+    console.log("Please let us be awesome");
+    db.getTweets(function (tweets) {
+      console.log(tweets, "I am tweets")
       return res.json(tweets);
-    }, 300);
+    });
+    console.log("We're awesome");
   });
 
   tweets.post("/", function(req, res) {
@@ -22,17 +22,16 @@ module.exports = function(db) {
     }
 
     const user = req.body.user ? req.body.user : User.generateRandomUser();
-    const tweet = {
+    const tweets = {
       user: user,
       content: {
         text: req.body.text
       },
       created_at: Date.now()
     };
-    db.saveTweet(tweet);
+    db.saveTweet(tweets);
     return res.send();
   });
-
 
   return tweets;
 }

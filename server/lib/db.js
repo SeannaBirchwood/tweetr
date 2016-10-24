@@ -2,40 +2,53 @@
 
 //copied from mongo_example.js
 
+const initialTweets = require("./tweets");
+
 const MongoClient = require("mongodb").MongoClient;
 
-const MONGODB_URI = "mongodb://127.0.0.1/tweetr"
+const MONGODB_URI = "mongodb://127.0.0.1/tweetr";
 
 console.log(`Connecting to MongoDB running at: ${MONGODB_URI}`);
 
-MongoClient.connect(MONGODB_URI, (err, db) => {
 
-  if (err) {
-    console.log('Could not connect! Unexpected error. Details below.');
-    throw err;
-  }
-
-  console.log('Connected to the database!');
-
-const dbMethods = {
-
-  saveTweet: (data) => {
-    db.tweets.push(data);
-    return true;
-  },
-
-  getTweets: () => {
-    return db.tweets.sort(function(a, b) { return a.created_at - b.created_at });
-  }
-
-}
 
 module.exports = {
 
   connect: (onConnect) => {
 
-    onConnect(dbMethods);
+    MongoClient.connect(MONGODB_URI, (err, db) => {
 
+      if (err) {
+        console.log('Could not connect! Unexpected error. Details below.');
+        throw err;
+      }
+
+      console.log('Connected to the MongoDB!');
+   
+
+    const dbMethods = {
+
+    saveTweet: (data, cb) => {
+      let allTweets = db.collection("tweets");
+      allTweets.insertOne(data);
+      console.log("I am the saveTweet function");
+      return true;
+    },
+
+    getTweets: (completionHandler) => {
+      let allTweets = db.collection("tweets");
+        return allTweets.find().toArray(function (err, results) {
+          console.log("Got " + results.length + " results");
+          completionHandler(results);
+          });
+          console.log(allTweets, "hey, you!");
+        }
+    }
+     onConnect(dbMethods);
+    });
   }
-
 }
+
+
+  
+
