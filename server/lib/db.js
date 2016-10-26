@@ -20,6 +20,7 @@ module.exports = {
 
       if (err) {
         throw err;
+        console.log("There has been an error connecting")
       }
 
       console.log('Connected to the MongoDB!');
@@ -36,6 +37,10 @@ module.exports = {
     getTweets: (completionHandler) => {
       let allTweets = db.collection("tweets");
         return allTweets.find().toArray(function (err, results) {
+          if (err) {
+            throw err;
+            console.log("There has been an error getting tweets through completionHandler")
+          }
           completionHandler(results);
           });
         }
