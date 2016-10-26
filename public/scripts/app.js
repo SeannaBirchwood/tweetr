@@ -50,9 +50,29 @@
 
 	$('form').on("submit", function(event) {
 		event.preventDefault();
-		var posting = $.post("/tweets/", $(this).serialize(), function() {
-			loadTweets();
+		var postedTweet = $(this).serialize();
+		var char = $(this).find('textarea').val();
+		if (char.length > 140) {
+			event.preventDefault();
+			$('.manyChar').css("display", "inline");
+			$('.emptyChar').css("display", "none");
+		} else if (char == 0 || null || "   ") {
+			event.preventDefault();
+			$('.emptyChar').css("display", "inline");
+			$('.manyChar').css("display", "none")
+		} else if (char != 0) {
+			$('.manyChar').css("display", "none");
+			$('.emptyChar').css("display", "none");
+		} else {
+			$.ajax({
+			url: '/tweets',
+			method: 'POST',
+			data: postedTweet,
+			success: function(response) {
+				loadTweets(response);
+			}
 		});
+		}
 		$('textarea').val('');
 	});
 
@@ -67,7 +87,7 @@
 
 	$('.new-tweet').hide();
 	$('button').on("click", () => {
-		$('.new-tweet').toggle();
+		$('.new-tweet').slideToggle();
 		$('textarea').focus();
 	});
 

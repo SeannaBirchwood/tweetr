@@ -29,3 +29,16 @@ textarea {
 
 input {
 	padding-top: 4px;
+}
+
+.manyChar {
+	display: none;
+	color: red;
+	size: 0em;
+}
+
+.emptyChar {
+	display: none;
+	color: black;
+	size: 0em;
+}
