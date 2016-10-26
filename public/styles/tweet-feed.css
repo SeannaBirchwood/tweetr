@@ -1,17 +1,13 @@
-.bgdConatiner {
-	background-color: black;
-	width: 800px;
-}
 
 .tweet-feed {
 	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-left: 0px;
-	margin-right: 0px;
-	height: 250px;
+	margin: 0 auto;
+	height: 100%;
 	width: 600px;
-	margin: 7em;
-	margin-top: 0em;
+	margin-top: 20px;
+	border-radius: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 article {
@@ -20,6 +16,7 @@ article {
 	border: 1px solid #CBCBCB;
 	border-radius: 10px;
 	height: 250px;
+	word-wrap: break-word;
 }
 
 article:hover .fa-flag, article:hover .fa-retweet, article:hover .fa-heart {
@@ -33,6 +30,7 @@ article:hover {
 article header {
 	background-color: #F3F3F3;
 	height: 100px;
+	border-radius: 10px;
 }
 
 .profilePicture {

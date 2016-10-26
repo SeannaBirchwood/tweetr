@@ -36,14 +36,11 @@ body {
 
  .container {
 	width: 800px;
-	position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-	margin: auto;
+  height: 100%;
+	margin: 0 auto;
 	background-color: white;
 	margin-top: 140px;
+  padding-top: 10px;
 }
 
 
