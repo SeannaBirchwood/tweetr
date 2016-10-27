@@ -52,18 +52,13 @@
 		event.preventDefault();
 		var postedTweet = $(this).serialize();
 		var char = $(this).find('textarea').val();
-		if (char.length > 140) {
+		if (char.length >= 140) {
 			event.preventDefault();
-			$('.manyChar').css("display", "inline");
-			$('.emptyChar').css("display", "none");
-		} else if (char == 0 || null || "   ") {
+			$('.manyChar').toggle();
+		 } else if (char === "  " || char === null || char.length === 0) {
 			event.preventDefault();
-			$('.emptyChar').css("display", "inline");
-			$('.manyChar').css("display", "none")
-		} else if (char != 0) {
-			$('.manyChar').css("display", "none");
-			$('.emptyChar').css("display", "none");
-		} else {
+			$('.emptyChar').toggle();
+		 } else {
 			$.ajax({
 			url: '/tweets',
 			method: 'POST',
